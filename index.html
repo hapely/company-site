@@ -9,9 +9,9 @@
 
 <style>
 :root{
-    --bg:#D2E5FE;
-    --text:#2a1f1b;
-    --muted:#2f241f;
+    --bg:#D6E4F5;
+    --text:#1f1a17;
+    --muted:#4a3f3a;
 }
 
 /* reset */
@@ -25,52 +25,43 @@ body{
     background:var(--bg);
     font-family:sans-serif;
     overflow-x:hidden;
+    color:var(--text);
 }
 
-/* =========================
-   PAGE TRANSITION
-========================= */
-.page-transition{
-    position:fixed;
-    inset:0;
-    background:#fff;
-    z-index:9999;
-    pointer-events:none;
-    opacity:0;
-    transition:0.8s ease;
-}
-
-/* =========================
-   HEADER
-========================= */
+/* ================= HEADER ================= */
 .header{
     position:fixed;
     top:0;
     width:100%;
     display:flex;
     justify-content:space-between;
+    align-items:center;
     padding:22px 40px;
     z-index:1000;
-    mix-blend-mode:difference;
 }
 
 .logo{
     font-family:'Cormorant Garamond', serif;
-    color:white;
+    font-size:20px;
     letter-spacing:3px;
+    color:var(--text);
 }
 
 .nav a{
-    color:white;
+    color:var(--text);
     text-decoration:none;
     margin-left:20px;
     font-size:12px;
     letter-spacing:2px;
+    opacity:0.75;
+    transition:0.3s;
 }
 
-/* =========================
-   SECTIONS
-========================= */
+.nav a:hover{
+    opacity:1;
+}
+
+/* ================= SECTIONS ================= */
 section{
     height:100vh;
     display:flex;
@@ -86,16 +77,13 @@ section{
 .hero h1{
     font-family:'Cormorant Garamond', serif;
     font-size:72px;
-    color:var(--text);
 }
 
 .hero p{
     color:var(--muted);
 }
 
-/* =========================
-   IMAGE
-========================= */
+/* ================= IMAGE ================= */
 .media{
     position:absolute;
     inset:0;
@@ -110,8 +98,9 @@ section{
     height:82%;
     object-fit:cover;
     border-radius:32px;
-    box-shadow:0 25px 70px rgba(0,0,0,0.18);
+    box-shadow:0 25px 70px rgba(0,0,0,0.12);
     transition:0.5s ease;
+    filter:saturate(0.95) contrast(1.02);
 }
 
 .media:hover img{
@@ -121,16 +110,13 @@ section{
 .overlay{
     position:absolute;
     inset:0;
-    background:rgba(0,0,0,0.12);
+    background:rgba(0,0,0,0.06);
 }
 
-/* =========================
-   TEXT
-========================= */
+/* ================= TEXT ================= */
 h2{
     font-family:'Cormorant Garamond', serif;
     font-size:42px;
-    color:var(--text);
     position:relative;
     z-index:2;
 }
@@ -141,7 +127,7 @@ p{
     z-index:2;
 }
 
-/* fade */
+/* ================= ANIMATION ================= */
 .fade{
     opacity:0;
     transform:translateY(40px);
@@ -153,9 +139,7 @@ p{
     transform:translateY(0);
 }
 
-/* =========================
-   FOOTER（追加）
-========================= */
+/* ================= FOOTER（SNS中央修正済み） ================= */
 .footer{
     background:#fff;
     padding:70px 40px;
@@ -171,19 +155,26 @@ p{
     font-size:12px;
     letter-spacing:2px;
     color:#2f241f;
+
+    position:relative; /* ★SNS中央配置の基準 */
 }
 
-/* SNS */
+/* ★SNS完全中央固定 */
 .sns{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
     display:flex;
     gap:28px;
     align-items:center;
 }
 
+/* アイコン統一 */
 .icon{
-    width:40px;
-    height:40px;
-    color:#2f241f;
+    width:38px;
+    height:38px;
+    stroke:#2f241f;
+    fill:none;
     opacity:0.75;
     transition:0.3s;
 }
@@ -193,10 +184,11 @@ p{
     transform:translateY(-4px);
 }
 
+/* TikTok */
 .tiktok{
-    font-size:26px;
-    width:40px;
-    height:40px;
+    font-size:24px;
+    width:38px;
+    height:38px;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -214,9 +206,6 @@ p{
 </head>
 
 <body>
-
-<!-- PAGE TRANSITION -->
-<div class="page-transition" id="transition"></div>
 
 <!-- HEADER -->
 <header class="header">
@@ -290,7 +279,7 @@ p{
                 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
                     <rect x="3" y="3" width="18" height="18" rx="5"/>
                     <circle cx="12" cy="12" r="3.5"/>
-                    <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+                    <circle cx="17.5" cy="6.5" r="1.2"/>
                 </svg>
             </a>
 
@@ -307,8 +296,6 @@ p{
 
         </div>
 
-        <div></div>
-
     </div>
 </footer>
 
@@ -324,24 +311,6 @@ const observer = new IntersectionObserver(entries=>{
 },{threshold:0.2});
 
 targets.forEach(el=>observer.observe(el));
-
-/* ページ遷移 */
-document.querySelectorAll("a").forEach(link=>{
-    link.addEventListener("click", (e)=>{
-        const url = link.getAttribute("href");
-
-        if(url && url.includes(".html")){
-            e.preventDefault();
-
-            const transition = document.getElementById("transition");
-            transition.style.opacity = "1";
-
-            setTimeout(()=>{
-                window.location.href = url;
-            },600);
-        }
-    });
-});
 </script>
 
 </body>
