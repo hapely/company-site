@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SERVICE｜HAPELY</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#ffffff;
+    --text:#2a1f1b;
+    --muted:#2f241f;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:var(--bg);
+    font-family:sans-serif;
+    color:var(--text);
+}
+
+/* HEADER */
+.header{
+    position:fixed;
+    top:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    padding:22px 40px;
+    mix-blend-mode:difference;
+    z-index:1000;
+}
+
+.logo{
+    font-family:'Cormorant Garamond', serif;
+    color:white;
+    letter-spacing:3px;
+}
+
+.nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:12px;
+}
+
+/* LAYOUT */
+.container{
+    min-height:100vh;
+    padding:160px 5vw;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:70px;
+    text-align:center;
+}
+
+/* TITLE */
+h1{
+    font-family:'Cormorant Garamond', serif;
+    font-size:64px;
+}
+
+/* CARD */
+.card{
+    width:100%;
+    max-width:860px;
+    padding:40px 35px;
+    border-radius:18px;
+    background:rgba(210,229,254,0.25);
+    border:1px solid rgba(0,0,0,0.05);
+    backdrop-filter: blur(10px);
+    box-shadow:0 20px 60px rgba(0,0,0,0.05);
+
+    opacity:0;
+    transform:translateY(-40px);
+    transition:0.9s ease;
+}
+
+.card.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* TITLE */
+.service-title{
+    font-family:'Cormorant Garamond', serif;
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+/* TEXT */
+.card p{
+    line-height:2;
+    color:var(--muted);
+    font-size:15px;
+}
+
+/* META INFO */
+.meta{
+    margin-top:14px;
+    font-size:13px;
+    color:#2a1f1b;
+    opacity:0.8;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+/* PRICE */
+.price{
+    margin-top:10px;
+    font-weight:500;
+    font-size:14px;
+}
+
+/* CTA BUTTON */
+.cta{
+    margin-top:50px;
+    display:inline-block;
+    padding:14px 26px;
+    border-radius:999px;
+    border:1px solid #2a1f1b;
+    text-decoration:none;
+    color:#2a1f1b;
+    font-size:12px;
+    letter-spacing:2px;
+    transition:0.3s;
+}
+
+.cta:hover{
+    background:#2a1f1b;
+    color:#fff;
+    transform:translateY(-2px);
+}
+
+/* SECONDARY BUTTON */
+.sub-cta{
+    margin-top:20px;
+    display:inline-block;
+    font-size:12px;
+    letter-spacing:2px;
+    color:#2a1f1b;
+    opacity:0.7;
+    text-decoration:none;
+    border-bottom:1px solid rgba(0,0,0,0.2);
+    padding-bottom:4px;
+    transition:0.3s;
+}
+
+.sub-cta:hover{
+    opacity:1;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">HAPELY</div>
+
+    <nav class="nav">
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="service.html">SERVICE</a>
+        <a href="work.html">WORK</a>
+        <a href="contact.html">CONTACT</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <h1>SERVICE</h1>
+
+    <!-- LONG -->
+    <div class="card">
+        <div class="service-title">Long Video Editing</div>
+
+        <p>
+            YouTube・ブランドムービー・ドキュメンタリーなど長尺映像制作。<br>
+            ストーリー設計と感情の流れを重視した映像制作。
+        </p>
+
+        <div class="meta">
+            <div>納期目安：7〜14日</div>
+            <div>修正回数：2回まで</div>
+        </div>
+
+        <div class="price">¥30,000 〜 ¥120,000</div>
+    </div>
+
+    <!-- SHORT -->
+    <div class="card">
+        <div class="service-title">Short Video / SNS</div>
+
+        <p>
+            TikTok・Instagram・YouTube Shortsなど短尺コンテンツ制作。<br>
+            拡散を意識した構成・テンポ設計。
+        </p>
+
+        <div class="meta">
+            <div>納期目安：2〜5日</div>
+            <div>修正回数：1回まで</div>
+        </div>
+
+        <div class="price">¥5,000 〜 ¥30,000 / 1本</div>
+    </div>
+
+    <!-- SHOOTING -->
+    <div class="card">
+        <div class="service-title">Shooting</div>
+
+        <p>
+            写真・映像撮影を含めたビジュアル制作。<br>
+            空気感・世界観を重視した撮影。
+        </p>
+
+        <div class="meta">
+            <div>納期目安：5〜10日</div>
+            <div>修正回数：2回まで</div>
+        </div>
+
+        <div class="price">¥20,000 〜 ¥100,000</div>
+    </div>
+
+    <!-- CTA -->
+    <a href="contact.html" class="cta">見積もり・相談する →</a>
+
+    <!-- WORK LINK -->
+    <a href="work.html" class="sub-cta">実績を見る（WORK）</a>
+
+</div>
+
+<script>
+const cards = document.querySelectorAll(".card");
+
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+},{threshold:0.2});
+
+cards.forEach(c=>observer.observe(c));
+</script>
+
+</body>
+</html>

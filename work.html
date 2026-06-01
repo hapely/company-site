@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WORK｜HAPELY</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#D2E5FE;
+    font-family:sans-serif;
+    color:#2a1f1b;
+}
+
+/* ================= HEADER ================= */
+.header{
+    position:fixed;
+    top:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px 40px;
+    z-index:1000;
+    mix-blend-mode:difference;
+}
+
+.logo{
+    font-family:'Cormorant Garamond', serif;
+    color:white;
+    letter-spacing:3px;
+    font-size:20px;
+}
+
+.nav{
+    display:flex;
+    gap:20px;
+}
+
+.nav a{
+    color:white;
+    text-decoration:none;
+    font-size:12px;
+    letter-spacing:2px;
+    opacity:0.8;
+    transition:0.3s;
+}
+
+.nav a:hover{
+    opacity:1;
+}
+
+/* ================= TITLE ================= */
+.title{
+    text-align:center;
+    padding:160px 20px 40px; /* ヘッダー分調整 */
+    font-size:60px;
+    font-family:'Cormorant Garamond', serif;
+}
+
+/* ================= SECTION ================= */
+.section{
+    max-width:1000px;
+    margin:0 auto 120px;
+    padding:0 20px;
+}
+
+.section h2{
+    font-size:28px;
+    margin-bottom:20px;
+    font-family:'Cormorant Garamond', serif;
+}
+
+/* ================= VIEWER ================= */
+.viewer-wrap{
+    position:relative;
+}
+
+.viewer{
+    width:100%;
+    height:65vh;
+    background:#fff;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,0.2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.viewer img{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+    background:#fff;
+}
+
+/* ARROWS */
+.arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:52px;
+    height:52px;
+    border:none;
+    background:transparent;
+    cursor:pointer;
+    opacity:0;
+    transition:0.3s;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.viewer-wrap:hover .arrow{
+    opacity:1;
+}
+
+.arrow svg{
+    width:28px;
+    height:28px;
+    stroke:#2a1f1b;
+    stroke-width:1.5;
+    fill:none;
+}
+
+.left{ left:-60px; }
+.right{ right:-60px; }
+
+/* THUMBS */
+.thumb-list{
+    display:flex;
+    justify-content:flex-start;
+    gap:12px;
+    margin-top:25px;
+    overflow-x:auto;
+    padding:10px 5px;
+    scroll-snap-type:x mandatory;
+}
+
+.thumb-list::-webkit-scrollbar{
+    display:none;
+}
+
+.thumb{
+    flex:0 0 auto;
+    width:100px;
+    height:70px;
+    background:#fff;
+    border-radius:10px;
+    overflow:hidden;
+    cursor:pointer;
+    opacity:0.5;
+    border:2px solid transparent;
+}
+
+.thumb img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+.thumb.active{
+    opacity:1;
+    border:2px solid #2a1f1b;
+}
+
+/* LINK CARD */
+.card{
+    background:#fff;
+    border-radius:20px;
+    padding:40px;
+    text-align:center;
+    cursor:pointer;
+    box-shadow:0 20px 60px rgba(0,0,0,0.12);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h3{
+    font-size:22px;
+    margin-bottom:10px;
+    font-family:'Cormorant Garamond', serif;
+}
+
+.card p{
+    font-size:14px;
+    opacity:0.7;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+
+    <div class="logo">HAPELY</div>
+
+    <nav class="nav">
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="service.html">SERVICE</a>
+        <a href="work.html">WORK</a>
+        <a href="contact.html">CONTACT</a>
+    </nav>
+
+</header>
+
+<!-- ================= TITLE ================= -->
+<div class="title">WORK</div>
+
+<!-- ================= PHOTO ================= -->
+<div class="section">
+
+    <h2>PHOTO GALLERY</h2>
+
+    <div class="viewer-wrap">
+
+        <button class="arrow left" onclick="prev()">
+            <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+
+        <div class="viewer">
+            <img id="main" src="image/IMG_4391.jpg">
+        </div>
+
+        <button class="arrow right" onclick="next()">
+            <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+
+    </div>
+
+    <div class="thumb-list">
+        <div class="thumb" onclick="set(0)"><img src="image/IMG_4391.jpg"></div>
+        <div class="thumb" onclick="set(1)"><img src="image/IMG_4392.jpg"></div>
+        <div class="thumb" onclick="set(2)"><img src="image/IMG_4393.jpg"></div>
+        <div class="thumb" onclick="set(3)"><img src="image/IMG_4394.jpg"></div>
+        <div class="thumb" onclick="set(4)"><img src="image/IMG_4396.jpg"></div>
+        <div class="thumb" onclick="set(5)"><img src="image/IMG_4397.jpg"></div>
+        <div class="thumb" onclick="set(6)"><img src="image/IMG_4398.jpg"></div>
+    </div>
+
+</div>
+
+<!-- ================= YOUTUBE ================= -->
+<div class="section">
+
+    <h2>VLOG / LIFE MOVIE</h2>
+
+    <div class="card"
+        onclick="window.open('https://www.youtube.com/channel/UCbjiIbssFQPR_Etzx66yDJw','_blank')">
+
+        <h3>YouTube</h3>
+        <p>Vlog / Life Movie / Cinematic Works</p>
+
+    </div>
+
+</div>
+
+<!-- ================= TIKTOK ================= -->
+<div class="section">
+
+    <h2>SHORT VIDEO</h2>
+
+    <div class="card"
+        onclick="window.open('https://www.tiktok.com/@tsunachannel','_blank')">
+
+        <h3>TikTok</h3>
+        <p>Short Form / Creative Clips</p>
+
+    </div>
+
+</div>
+
+<script>
+
+const images = [
+    "image/IMG_4391.jpg",
+    "image/IMG_4392.jpg",
+    "image/IMG_4393.jpg",
+    "image/IMG_4394.jpg",
+    "image/IMG_4396.jpg",
+    "image/IMG_4397.jpg",
+    "image/IMG_4398.jpg"
+];
+
+let i = 0;
+
+function set(index){
+    i = index;
+    update();
+}
+
+function next(){
+    i = (i + 1) % images.length;
+    update();
+}
+
+function prev(){
+    i = (i - 1 + images.length) % images.length;
+    update();
+}
+
+function update(){
+    document.getElementById("main").src = images[i];
+
+    document.querySelectorAll(".thumb").forEach((t,idx)=>{
+        t.classList.toggle("active", idx === i);
+    });
+}
+
+update();
+
+</script>
+
+</body>
+</html>
