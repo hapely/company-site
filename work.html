@@ -8,6 +8,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
+:root{
+    --bg:#D2E5FE;
+    --text:#1f1a17;
+    --muted:#4a3f3a;
+}
+
+/* RESET */
 *{
     margin:0;
     padding:0;
@@ -15,60 +22,69 @@
 }
 
 body{
-    background:#D2E5FE;
+    background:var(--bg);
     font-family:sans-serif;
-    color:#2a1f1b;
+    color:var(--text);
     overflow-x:hidden;
 }
 
-/* ================= HEADER ================= */
+/* ================= HEADER（完全統一版） ================= */
 .header{
     position:fixed;
     top:0;
+    left:0;
     width:100%;
+    z-index:1000;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:18px 22px;
-    z-index:1000;
-    mix-blend-mode:difference;
+
+    padding:14px 18px;
+    background:rgba(214,228,245,0.75);
+    backdrop-filter:blur(12px);
 }
 
 .logo{
     font-family:'Cormorant Garamond', serif;
-    color:white;
-    letter-spacing:3px;
     font-size:18px;
+    letter-spacing:2px;
 }
 
 .nav{
     display:flex;
-    gap:14px;
     flex-wrap:wrap;
+    gap:10px;
     justify-content:flex-end;
 }
 
 .nav a{
-    color:white;
-    text-decoration:none;
     font-size:11px;
-    letter-spacing:1.5px;
-    opacity:0.8;
+    letter-spacing:1px;
+    text-decoration:none;
+    color:var(--text);
+    opacity:0.75;
+    transition:0.25s ease;
+}
+
+.nav a:hover{
+    opacity:1;
+    transform:translateY(-2px);
 }
 
 /* ================= TITLE ================= */
 .title{
     text-align:center;
-    padding:120px 16px 30px;
-    font-size:42px;
+    padding:110px 16px 20px;
+    font-size:40px;
     font-family:'Cormorant Garamond', serif;
 }
 
 /* ================= SECTION ================= */
 .section{
     max-width:1000px;
-    margin:0 auto 80px;
-    padding:0 16px;
+    margin:0 auto 70px;
+    padding:0 14px;
 }
 
 /* ================= VIEWER ================= */
@@ -78,44 +94,39 @@ body{
 
 .viewer{
     width:100%;
-    height:55vh;
+    height:52vh;
     background:#fff;
+    border-radius:14px;
     overflow:hidden;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:12px;
-    box-shadow:0 20px 50px rgba(0,0,0,0.15);
+
+    box-shadow:0 20px 50px rgba(0,0,0,0.12);
     position:relative;
 }
 
-/* ====== SLIDE ANIMATION ====== */
 .viewer img{
     max-width:100%;
     max-height:100%;
     object-fit:contain;
     padding:8px;
     position:absolute;
-    transition:0.45s ease;
 }
 
-/* 左右スライド用 */
-.slide-in-right{
-    animation:inRight 0.45s ease;
-}
-
-.slide-in-left{
-    animation:inLeft 0.45s ease;
-}
+/* ANIMATION */
+.slide-in-right{animation:inRight .45s ease;}
+.slide-in-left{animation:inLeft .45s ease;}
 
 @keyframes inRight{
-    from{transform:translateX(40px); opacity:0;}
-    to{transform:translateX(0); opacity:1;}
+    from{transform:translateX(30px);opacity:0;}
+    to{transform:translateX(0);opacity:1;}
 }
 
 @keyframes inLeft{
-    from{transform:translateX(-40px); opacity:0;}
-    to{transform:translateX(0); opacity:1;}
+    from{transform:translateX(-30px);opacity:0;}
+    to{transform:translateX(0);opacity:1;}
 }
 
 /* ================= ARROW ================= */
@@ -123,28 +134,31 @@ body{
     position:absolute;
     top:50%;
     transform:translateY(-50%);
-    width:44px;
-    height:44px;
+    width:40px;
+    height:40px;
+
     border:none;
-    background:rgba(255,255,255,0.7);
+    background:rgba(255,255,255,0.8);
     border-radius:50%;
+
     cursor:pointer;
+    z-index:10;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    z-index:10;
 }
 
 .arrow svg{
-    width:20px;
-    height:20px;
+    width:18px;
+    height:18px;
     stroke:#2a1f1b;
     stroke-width:2;
     fill:none;
 }
 
-.left{left:8px;}
-.right{right:8px;}
+.left{left:10px;}
+.right{right:10px;}
 
 /* ================= THUMBS ================= */
 .thumb-list{
@@ -152,14 +166,16 @@ body{
     gap:10px;
     overflow-x:auto;
     margin-top:14px;
+    padding-bottom:6px;
 }
 
 .thumb{
     flex:0 0 auto;
-    width:80px;
-    height:55px;
+    width:70px;
+    height:50px;
     background:#fff;
-    opacity:0.5;
+    border-radius:8px;
+    opacity:0.6;
     border:2px solid transparent;
 }
 
@@ -171,85 +187,89 @@ body{
 
 .thumb.active{
     opacity:1;
-    border:2px solid #2a1f1b;
+    border-color:#2a1f1b;
 }
 
-/* ================= CARD ================= */
+/* ================= CARDS ================= */
 .card{
     background:#fff;
-    padding:28px 20px;
+    padding:24px 18px;
     text-align:center;
-    cursor:pointer;
-    box-shadow:0 15px 40px rgba(0,0,0,0.12);
     border-radius:12px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.1);
+    cursor:pointer;
+    margin-bottom:16px;
 }
 
 .card h3{
-    font-size:18px;
-    margin-bottom:8px;
     font-family:'Cormorant Garamond', serif;
+    margin-bottom:6px;
 }
 
-.card p{
-    font-size:13px;
-    opacity:0.7;
-}
-
-/* ================= FOOTER ================= */
+/* ================= FOOTER（完全統一） ================= */
 .footer{
     background:#fff;
-    padding:50px 20px;
+    padding:40px 16px;
     border-top:1px solid rgba(0,0,0,0.08);
 }
 
 .footer-inner{
-    max-width:1100px;
+    max-width:1000px;
     margin:0 auto;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
-    font-size:11px;
-    position:relative;
+    flex-wrap:wrap;
+    gap:16px;
 }
 
 .sns{
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
     display:flex;
     gap:18px;
+    align-items:center;
 }
 
 .icon{
     width:30px;
     height:30px;
-    stroke:#2f241f;
-    opacity:0.8;
+    stroke:#2f241f !important;
+    fill:none !important;
+    stroke-width:1.6;
+    opacity:0.85;
+    transition:0.25s ease;
+}
+
+.icon:hover{
+    opacity:1;
+    transform:translateY(-3px);
 }
 
 .tiktok{
     font-size:18px;
-    color:#2f241f;
+    color:#2f241f !important;
 }
 
-/* ================= MOBILE ================= */
-@media (max-width:768px){
+/* MOBILE */
+@media(max-width:768px){
 
-    .nav{
-        display:none;
+    .header{
+        flex-direction:column;
+        gap:8px;
+        padding:12px;
     }
 
-    .title{
-        font-size:34px;
+    .nav{
+        justify-content:center;
     }
 
     .viewer{
-        height:45vh;
+        height:42vh;
     }
 
-    .arrow{
-        width:38px;
-        height:38px;
+    .footer-inner{
+        flex-direction:column;
+        text-align:center;
     }
 
     .thumb{
@@ -257,14 +277,9 @@ body{
         height:45px;
     }
 
-    .footer-inner{
-        flex-direction:column;
-        gap:20px;
-    }
-
-    .sns{
-        position:static;
-        transform:none;
+    .arrow{
+        width:36px;
+        height:36px;
     }
 }
 </style>
@@ -274,6 +289,7 @@ body{
 
 <header class="header">
     <div class="logo">HAPELY</div>
+
     <nav class="nav">
         <a href="index.html">HOME</a>
         <a href="about.html">ABOUT</a>
@@ -316,9 +332,7 @@ body{
         <h3>YouTube</h3>
         <p>Vlog / Cinematic</p>
     </div>
-</div>
 
-<div class="section">
     <div class="card" onclick="window.open('https://tiktok.com','_blank')">
         <h3>TikTok</h3>
         <p>Short Form</p>
@@ -327,13 +341,30 @@ body{
 
 <footer class="footer">
     <div class="footer-inner">
+
         <div>© HAPELY</div>
 
         <div class="sns">
-            <a href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18"/><circle cx="12" cy="12" r="3"/></svg></a>
-            <a href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14"/><path d="M10 9l5 3-5 3"/></svg></a>
+
+            <a href="https://instagram.com" target="_blank">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="18" height="18" rx="5"/>
+                    <circle cx="12" cy="12" r="3.5"/>
+                    <circle cx="17.5" cy="6.5" r="1.2"/>
+                </svg>
+            </a>
+
+            <a href="https://youtube.com" target="_blank">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <rect x="3" y="5" width="18" height="14" rx="4"/>
+                    <path d="M10 9l5 3-5 3z"/>
+                </svg>
+            </a>
+
             <a class="tiktok">♪</a>
+
         </div>
+
     </div>
 </footer>
 

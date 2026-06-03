@@ -14,7 +14,7 @@
     --muted:#2f241f;
 }
 
-/* ================= RESET ================= */
+/* RESET */
 *{
     margin:0;
     padding:0;
@@ -28,77 +28,81 @@ body{
     overflow-x:hidden;
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 .header{
     position:fixed;
     top:0;
     left:0;
     width:100%;
+    z-index:1000;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:22px 40px;
-    z-index:1000;
+
+    padding:14px 18px;
     background:rgba(255,255,255,0.75);
     backdrop-filter:blur(10px);
 }
 
 .logo{
     font-family:'Cormorant Garamond', serif;
-    font-size:20px;
-    letter-spacing:3px;
-    color:var(--text);
+    font-size:18px;
+    letter-spacing:2px;
 }
 
 .nav{
     display:flex;
-    gap:20px;
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content:flex-end;
 }
 
 .nav a{
-    color:var(--text);
+    font-size:11px;
+    letter-spacing:1px;
     text-decoration:none;
-    font-size:12px;
-    letter-spacing:2px;
+    color:var(--text);
     opacity:0.75;
-    transition:0.3s;
+    transition:0.25s ease;
 }
 
 .nav a:hover{
     opacity:1;
+    transform:translateY(-2px);
 }
 
-/* ================= LAYOUT ================= */
+/* LAYOUT */
 .container{
-    min-height:100vh;
-    padding:160px 5vw 120px;
+    min-height:100svh;
+    padding:90px 14px 60px;
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:70px;
     text-align:center;
+    gap:34px;
 }
 
 h1{
     font-family:'Cormorant Garamond', serif;
-    font-size:64px;
+    font-size:42px;
     letter-spacing:2px;
 }
 
-/* ================= CARD ================= */
+/* CARD */
 .card{
     width:100%;
     max-width:860px;
-    padding:40px 35px;
+    padding:24px 20px;
     border-radius:18px;
+
     background:rgba(214,228,245,0.35);
     border:1px solid rgba(0,0,0,0.05);
     backdrop-filter:blur(10px);
-    box-shadow:0 20px 60px rgba(0,0,0,0.05);
 
     opacity:0;
-    transform:translateY(-40px);
-    transition:0.9s ease;
+    transform:translateY(20px);
+    transition:0.7s ease;
 }
 
 .card.show{
@@ -108,161 +112,141 @@ h1{
 
 .service-title{
     font-family:'Cormorant Garamond', serif;
-    font-size:28px;
-    margin-bottom:10px;
+    font-size:24px;
+    margin-bottom:6px;
 }
 
 .card p{
-    line-height:2;
+    font-size:14px;
+    line-height:1.8;
     color:var(--muted);
-    font-size:15px;
 }
 
 .meta{
-    margin-top:14px;
-    font-size:13px;
+    margin-top:8px;
+    font-size:12px;
     opacity:0.8;
-    display:flex;
-    flex-direction:column;
-    gap:6px;
 }
 
 .price{
-    margin-top:10px;
-    font-weight:500;
-    font-size:14px;
+    margin-top:8px;
+    font-size:13px;
 }
 
-/* ================= BUTTON ================= */
-.cta{
-    margin-top:50px;
+/* ================= CTA（最重要） ================= */
+.cta-main{
+    margin-top:26px;
     display:inline-block;
-    padding:14px 26px;
+    padding:14px 28px;
     border-radius:999px;
-    border:1px solid #2a1f1b;
-    text-decoration:none;
-    color:#2a1f1b;
-    font-size:12px;
-    letter-spacing:2px;
-    transition:0.3s;
-}
 
-.cta:hover{
     background:#2a1f1b;
     color:#fff;
-    transform:translateY(-2px);
-}
 
-.sub-cta{
-    margin-top:20px;
-    display:inline-block;
+    text-decoration:none;
     font-size:12px;
     letter-spacing:2px;
-    color:#2a1f1b;
-    opacity:0.7;
-    text-decoration:none;
-    border-bottom:1px solid rgba(0,0,0,0.2);
-    padding-bottom:4px;
-    transition:0.3s;
+
+    transition:0.25s ease;
 }
 
-.sub-cta:hover{
+.cta-main:hover{
+    transform:translateY(-3px);
+    opacity:0.9;
+}
+
+/* SUB CTA（WORK誘導） */
+.cta-sub{
+    margin-top:14px;
+    display:inline-block;
+
+    font-size:12px;
+    letter-spacing:2px;
+
+    color:#2a1f1b;
+    text-decoration:none;
+
+    border-bottom:1px solid rgba(0,0,0,0.25);
+    padding-bottom:3px;
+
+    opacity:0.75;
+    transition:0.25s ease;
+}
+
+.cta-sub:hover{
     opacity:1;
 }
 
-/* ================= FOOTER ================= */
+/* FOOTER */
 .footer{
     background:#fff;
-    padding:70px 40px;
+    padding:40px 16px;
     border-top:1px solid rgba(0,0,0,0.08);
 }
 
 .footer-inner{
-    max-width:1100px;
+    max-width:1000px;
     margin:0 auto;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
-    font-size:12px;
-    letter-spacing:2px;
-    color:#2f241f;
-    position:relative;
+    flex-wrap:wrap;
+    gap:16px;
 }
 
+/* SNS */
 .sns{
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
     display:flex;
-    gap:28px;
+    gap:18px;
     align-items:center;
 }
 
+/* ICON FIX */
 .icon{
-    width:38px;
-    height:38px;
-    stroke:#2f241f;
-    fill:none;
-    opacity:0.75;
-    transition:0.3s;
+    width:30px;
+    height:30px;
+    stroke:#2f241f !important;
+    fill:none !important;
+    stroke-width:1.6;
+    opacity:0.85;
+    transition:0.25s ease;
 }
 
 .icon:hover{
     opacity:1;
-    transform:translateY(-4px);
+    transform:translateY(-3px);
 }
 
 .tiktok{
-    font-size:24px;
-    width:38px;
-    height:38px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#2f241f;
-    text-decoration:none;
-    opacity:0.75;
-    transition:0.3s;
+    font-size:18px;
+    color:#2f241f !important;
 }
 
-.tiktok:hover{
-    opacity:1;
-    transform:translateY(-4px);
-}
+/* MOBILE */
 @media(max-width:768px){
 
     .header{
-        padding:20px;
         flex-direction:column;
-        gap:12px;
+        gap:8px;
+        padding:12px;
     }
 
     .nav{
-        flex-wrap:wrap;
         justify-content:center;
-        gap:14px;
     }
 
     h1{
-        font-size:48px;
-    }
-
-    .card{
-        padding:30px 24px;
-    }
-
-    .footer{
-        padding:50px 20px;
+        font-size:34px;
     }
 
     .footer-inner{
         flex-direction:column;
-        gap:30px;
+        text-align:center;
     }
 
     .sns{
-        position:static;
-        transform:none;
+        justify-content:center;
     }
 }
 </style>
@@ -288,107 +272,60 @@ h1{
 
     <div class="card">
         <div class="service-title">Long Video Editing</div>
-
-        <p>
-            YouTube・ブランドムービー・ドキュメンタリーなど長尺映像制作。<br>
-            ストーリー設計と感情の流れを重視した映像制作。
-        </p>
-
-        <div class="meta">
-            <div>納期目安：7〜14日</div>
-            <div>修正回数：2回まで</div>
-        </div>
-
-        <div class="price">¥30,000 〜 ¥120,000</div>
+        <p>YouTube・ブランドムービー・ドキュメンタリー</p>
+        <div class="meta">納期：7〜14日</div>
+        <div class="price">¥30,000〜¥120,000</div>
     </div>
 
     <div class="card">
-        <div class="service-title">Short Video / SNS</div>
-
-        <p>
-            TikTok・Instagram・YouTube Shortsなど短尺コンテンツ制作。<br>
-            拡散を意識した構成・テンポ設計。
-        </p>
-
-        <div class="meta">
-            <div>納期目安：2〜5日</div>
-            <div>修正回数：1回まで</div>
-        </div>
-
-        <div class="price">¥5,000 〜 ¥30,000 / 1本</div>
+        <div class="service-title">Short Video</div>
+        <p>TikTok / Instagram / Shorts</p>
+        <div class="meta">納期：2〜5日</div>
+        <div class="price">¥5,000〜¥30,000</div>
     </div>
 
     <div class="card">
         <div class="service-title">Shooting</div>
-
-        <p>
-            写真・映像撮影を含めたビジュアル制作。<br>
-            空気感・世界観を重視した撮影。
-        </p>
-
-        <div class="meta">
-            <div>納期目安：5〜10日</div>
-            <div>修正回数：2回まで</div>
-        </div>
-
-        <div class="price">¥20,000 〜 ¥100,000</div>
+        <p>撮影＋世界観設計</p>
+        <div class="meta">納期：5〜10日</div>
+        <div class="price">¥20,000〜¥100,000</div>
     </div>
 
-    <a href="contact.html" class="cta">見積もり・相談する →</a>
+    <!-- ✅ 主導線：CONTACT -->
+    <a href="contact.html" class="cta-main">見積もり・相談する →</a>
 
-    <a href="work.html" class="sub-cta">実績を見る（WORK）</a>
+    <!-- ✅ 副導線：WORK -->
+    <a href="work.html" class="cta-sub">制作実績を見る</a>
 
 </div>
 
 <footer class="footer">
-
     <div class="footer-inner">
 
         <div>© HAPELY</div>
 
         <div class="sns">
 
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/china.tsuna.tuna/"
-               target="_blank"
-               rel="noopener noreferrer"
-               aria-label="Instagram">
-
-                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <a href="https://www.instagram.com/china.tsuna.tuna/" target="_blank">
+                <svg class="icon" viewBox="0 0 24 24">
                     <rect x="3" y="3" width="18" height="18" rx="5"/>
                     <circle cx="12" cy="12" r="3.5"/>
                     <circle cx="17.5" cy="6.5" r="1.2"/>
                 </svg>
-
             </a>
 
-            <!-- YouTube -->
-            <a href="https://www.youtube.com/hashtag/%E3%81%A4%E3%81%AA%E3%81%A1%E3%82%83%E3%82%93%E3%81%AD%E3%82%8B"
-               target="_blank"
-               rel="noopener noreferrer"
-               aria-label="YouTube">
-
-                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <a href="https://www.youtube.com/" target="_blank">
+                <svg class="icon" viewBox="0 0 24 24">
                     <rect x="3" y="5" width="18" height="14" rx="4"/>
-                    <path d="M10 9l5 3-5 3z" fill="currentColor"/>
+                    <path d="M10 9l5 3-5 3z"/>
                 </svg>
-
             </a>
 
-            <!-- TikTok -->
-            <a href="https://www.tiktok.com/@tsunachannel"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="tiktok"
-               aria-label="TikTok">♪</a>
+            <a href="https://www.tiktok.com/" class="tiktok">♪</a>
 
         </div>
 
-        <!-- SNS中央固定用 -->
-        <div></div>
-
     </div>
-
 </footer>
 
 <script>
@@ -400,13 +337,9 @@ const observer = new IntersectionObserver(entries=>{
             entry.target.classList.add("show");
         }
     });
-},{
-    threshold:0.2
-});
+},{threshold:0.2});
 
-cards.forEach(card=>{
-    observer.observe(card);
-});
+cards.forEach(c=>observer.observe(c));
 </script>
 
 </body>
