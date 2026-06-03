@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -9,11 +10,12 @@
 
 <style>
 :root{
-    --bg:#D2E5FE;
-    --text:#2a1f1b;
+    --bg:#D6E4F5;
+    --text:#1f1a17;
     --muted:#4a3f3a;
 }
 
+/* ================= RESET ================= */
 *{
     margin:0;
     padding:0;
@@ -21,14 +23,13 @@
 }
 
 body{
-    font-family:sans-serif;
     background:var(--bg);
+    font-family:sans-serif;
     color:var(--text);
-
-    /* フッター最下部固定用 */
     min-height:100vh;
     display:flex;
     flex-direction:column;
+    overflow-x:hidden;
 }
 
 /* ================= HEADER ================= */
@@ -47,14 +48,15 @@ body{
     font-family:'Cormorant Garamond', serif;
     font-size:20px;
     letter-spacing:3px;
+    color:var(--text);
 }
 
 .nav a{
-    margin-left:20px;
+    color:var(--text);
     text-decoration:none;
+    margin-left:20px;
     font-size:12px;
     letter-spacing:2px;
-    color:var(--text);
     opacity:0.75;
     transition:0.3s;
 }
@@ -63,32 +65,7 @@ body{
     opacity:1;
 }
 
-/* ================= BACK BUTTON ================= */
-.back{
-    position:fixed;
-    top:90px;
-    left:20px;
-    text-decoration:none;
-
-    padding:10px 16px;
-    border:1px solid var(--text);
-    border-radius:999px;
-
-    font-size:12px;
-    letter-spacing:2px;
-    color:var(--text);
-
-    transition:0.3s;
-    background:transparent;
-}
-
-.back:hover{
-    background:var(--text);
-    color:#fff;
-    transform:translateY(-2px);
-}
-
-/* ================= CENTER CONTENT ================= */
+/* ================= CONTENT ================= */
 .wrapper{
     flex:1;
     display:flex;
@@ -96,41 +73,55 @@ body{
     align-items:center;
     flex-direction:column;
     text-align:center;
-    padding:120px 20px 60px;
+    padding:140px 20px 100px;
 }
 
 h1{
     font-family:'Cormorant Garamond', serif;
-    font-size:60px;
-    margin-bottom:25px;
+    font-size:72px;
+    margin-bottom:12px;
 }
 
+.subtitle{
+    color:var(--muted);
+    margin-bottom:50px;
+}
+
+/* ================= FORM ================= */
 form{
+    width:100%;
+    max-width:420px;
     display:flex;
     flex-direction:column;
-    gap:15px;
-    width:320px;
+    gap:16px;
 }
 
-input,textarea{
-    padding:12px;
+input,
+textarea{
+    width:100%;
+    padding:16px;
     border:none;
-    border-radius:8px;
+    border-radius:14px;
+    background:#fff;
     font-size:14px;
     outline:none;
+    color:var(--text);
+    box-shadow:0 8px 30px rgba(0,0,0,0.05);
 }
 
 textarea{
-    min-height:120px;
+    min-height:160px;
+    resize:vertical;
 }
 
-/* ================= BUTTON ================= */
 button{
-    padding:12px;
-    background:var(--text);
-    color:white;
+    margin-top:8px;
+    padding:15px;
     border:none;
-    border-radius:8px;
+    border-radius:999px;
+    background:var(--text);
+    color:#fff;
+    font-size:12px;
     letter-spacing:2px;
     cursor:pointer;
     transition:0.3s;
@@ -152,12 +143,12 @@ button:hover{
     flex-direction:column;
 
     font-family:'Cormorant Garamond', serif;
-    font-size:38px;
     letter-spacing:3px;
 
     opacity:0;
     pointer-events:none;
     transition:0.6s ease;
+    z-index:9999;
 }
 
 .thankyou.show{
@@ -165,27 +156,36 @@ button:hover{
     pointer-events:auto;
 }
 
+.thankyou h2{
+    font-size:56px;
+    margin-bottom:10px;
+}
+
+.thankyou p{
+    font-size:16px;
+    color:var(--muted);
+}
+
 /* ================= FOOTER ================= */
 .footer{
-    margin-top:auto;
     background:#fff;
-    padding:50px 40px;
+    padding:70px 40px;
     border-top:1px solid rgba(0,0,0,0.08);
 }
 
 .footer-inner{
     max-width:1100px;
     margin:0 auto;
-
     display:flex;
     justify-content:space-between;
     align-items:center;
     font-size:12px;
     letter-spacing:2px;
-    color:var(--text);
+    color:#2f241f;
+    position:relative;
 }
 
-/* ★中央寄せ修正 */
+/* SNS中央固定 */
 .sns{
     position:absolute;
     left:50%;
@@ -195,28 +195,28 @@ button:hover{
     align-items:center;
 }
 
-/* SNSアイコン統一色 */
 .icon{
-    width:34px;
-    height:34px;
-    color:var(--text);
+    width:38px;
+    height:38px;
+    stroke:#2f241f;
+    fill:none;
     opacity:0.75;
     transition:0.3s;
 }
 
 .icon:hover{
     opacity:1;
-    transform:translateY(-3px);
+    transform:translateY(-4px);
 }
 
 .tiktok{
-    font-size:22px;
-    width:34px;
-    height:34px;
+    font-size:24px;
+    width:38px;
+    height:38px;
     display:flex;
     align-items:center;
     justify-content:center;
-    color:var(--text);
+    color:#2f241f;
     text-decoration:none;
     opacity:0.75;
     transition:0.3s;
@@ -224,116 +224,183 @@ button:hover{
 
 .tiktok:hover{
     opacity:1;
-    transform:translateY(-3px);
+    transform:translateY(-4px);
 }
 
-/* footer layout fix */
-.footer-inner{
-    position:relative;
-}
+/* ================= MOBILE ================= */
+@media(max-width:768px){
 
+    .header{
+        padding:18px 20px;
+    }
+
+    .nav a{
+        margin-left:12px;
+        font-size:11px;
+    }
+
+    h1{
+        font-size:54px;
+    }
+
+    .footer{
+        padding:60px 20px;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+        gap:25px;
+    }
+
+    .sns{
+        position:static;
+        transform:none;
+    }
+}
 </style>
+
 </head>
 
 <body>
 
 <!-- HEADER -->
+
 <header class="header">
     <div class="logo">HAPELY</div>
 
-    <nav class="nav">
-        <a href="index.html">HOME</a>
-        <a href="about.html">ABOUT</a>
-        <a href="service.html">SERVICE</a>
-        <a href="work.html">WORK</a>
-        <a href="contact.html">CONTACT</a>
-    </nav>
+```
+<nav class="nav">
+    <a href="index.html">HOME</a>
+    <a href="about.html">ABOUT</a>
+    <a href="service.html">SERVICE</a>
+    <a href="work.html">WORK</a>
+    <a href="contact.html">CONTACT</a>
+</nav>
+```
+
 </header>
 
-<!-- BACK BUTTON -->
-<a class="back" href="index.html">← BACK</a>
-
 <!-- CONTENT -->
+
 <div class="wrapper">
 
-    <h1>CONTACT</h1>
+```
+<h1>CONTACT</h1>
+<p class="subtitle">Feel free to contact me.</p>
 
-    <form id="form" action="https://formspree.io/f/xgoqjkrr" method="POST">
+<form id="form"
+      action="https://formspree.io/f/xgoqjkrr"
+      method="POST">
 
-        <input type="text" name="name" placeholder="お名前" required>
-        <input type="email" name="email" placeholder="メールアドレス" required>
-        <textarea name="message" placeholder="お問い合わせ内容" required></textarea>
+    <input
+        type="text"
+        name="name"
+        placeholder="お名前"
+        required>
 
-        <button type="submit">SEND</button>
-    </form>
+    <input
+        type="email"
+        name="email"
+        placeholder="メールアドレス"
+        required>
+
+    <textarea
+        name="message"
+        placeholder="お問い合わせ内容"
+        required></textarea>
+
+    <button type="submit">SEND</button>
+
+</form>
+```
 
 </div>
 
 <!-- THANK YOU -->
+
 <div class="thankyou" id="thankyou">
-    <div>THANK YOU</div>
-    <div style="font-size:16px; margin-top:10px;">MESSAGE SENT</div>
+    <h2>THANK YOU</h2>
+    <p>MESSAGE SENT</p>
 </div>
 
 <!-- FOOTER -->
+
 <footer class="footer">
     <div class="footer-inner">
 
-        <div>© HAPELY</div>
+```
+    <div>© HAPELY</div>
 
-        <div class="sns">
+    <div class="sns">
 
-            <a href="#">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                    <rect x="3" y="3" width="18" height="18" rx="5"/>
-                    <circle cx="12" cy="12" r="3.5"/>
-                </svg>
-            </a>
+        <!-- Instagram -->
+        <a href="#">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="3" y="3" width="18" height="18" rx="5"/>
+                <circle cx="12" cy="12" r="3.5"/>
+                <circle cx="17.5" cy="6.5" r="1.2"/>
+            </svg>
+        </a>
 
-            <a href="#">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                    <rect x="3" y="5" width="18" height="14" rx="4"/>
-                    <path d="M10 9l5 3-5 3z" fill="currentColor"/>
-                </svg>
-            </a>
+        <!-- YouTube -->
+        <a href="#">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="3" y="5" width="18" height="14" rx="4"/>
+                <path d="M10 9l5 3-5 3z" fill="currentColor"/>
+            </svg>
+        </a>
 
-            <a href="#" class="tiktok">♪</a>
-
-        </div>
-
-        <div></div>
+        <!-- TikTok -->
+        <a href="#" class="tiktok">♪</a>
 
     </div>
+
+</div>
+```
+
 </footer>
 
 <script>
 const form = document.getElementById("form");
 const thankyou = document.getElementById("thankyou");
 
-form.addEventListener("submit", async (e)=>{
+form.addEventListener("submit", async (e) => {
+
     e.preventDefault();
 
-    const btn = form.querySelector("button");
-    btn.innerText = "SENDING...";
+    const button = form.querySelector("button");
+    button.textContent = "SENDING...";
 
-    const res = await fetch(form.action, {
-        method:"POST",
-        body:new FormData(form),
-        headers:{ "Accept":"application/json" }
-    });
+    try{
 
-    if(res.ok){
-        thankyou.classList.add("show");
+        const response = await fetch(form.action,{
+            method:"POST",
+            body:new FormData(form),
+            headers:{
+                "Accept":"application/json"
+            }
+        });
 
-        setTimeout(()=>{
-            thankyou.classList.remove("show");
+        if(response.ok){
+
+            thankyou.classList.add("show");
+
             form.reset();
-            btn.innerText = "SEND";
-        },2500);
-    }else{
-        alert("エラーが発生しました");
-        btn.innerText = "SEND";
+
+            setTimeout(()=>{
+                thankyou.classList.remove("show");
+            },2500);
+
+        }else{
+            alert("送信に失敗しました。");
+        }
+
+    }catch(error){
+        alert("通信エラーが発生しました。");
     }
+
+    button.textContent = "SEND";
+
 });
 </script>
 
